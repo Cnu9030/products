@@ -1,6 +1,7 @@
 package com.ecom.products.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -8,14 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class orders {
     @Id
-    @NotNull
+    @NotNull(message = "{order.id.required}")
     private Integer orderId;
-    @NotNull
+    @NotNull(message = "{customer.id.required}")
     private Integer customerId;
     private LocalDate date;
 
@@ -25,49 +27,61 @@ public class orders {
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="productId")
-    private product products;
+    @NotEmpty(message = "{products.required}")
+    private List<product> products;
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="addressId")
     private shipping ship;
-    
+
     public Integer getOrderId() {
         return orderId;
     }
+
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
+
     public Integer getCustomerId() {
         return customerId;
     }
+
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
     public LocalDate getDate() {
         return date;
     }
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    
+
     public payment getPayment() {
         return payment;
     }
+
     public void setPayment(payment payment) {
         this.payment = payment;
     }
-    public product getProducts() {
+
+    public List<product> getProducts() {
         return products;
     }
-    public void setProducts(product products) {
+
+    public void setProducts(List<product> products) {
         this.products = products;
     }
+
     public shipping getShip() {
         return ship;
     }
+
     public void setShip(shipping ship) {
         this.ship = ship;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -80,6 +94,7 @@ public class orders {
         result = prime * result + ((ship == null) ? 0 : ship.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -121,11 +136,14 @@ public class orders {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         return "orders [orderId=" + orderId + ", customerId=" + customerId + ", date=" + date + ", payment=" + payment
                 + ", products=" + products + ", ship=" + ship + "]";
     }
+    
+    
 
     
 }
