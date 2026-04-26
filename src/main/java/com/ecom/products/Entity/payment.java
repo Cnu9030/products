@@ -12,7 +12,7 @@ public class payment {
     private Integer orderId;
     private Long cardNumber;
     private String cardType;
-    private LocalDate expiryDate;
+    private String expiryDate;
     private Integer cvv;
     
     public Long getCardNumber() {
@@ -27,12 +27,7 @@ public class payment {
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
-    public LocalDate getExpiryDate() {
-        return expiryDate;
-    }
-    public void setExpiryDate(LocalDate expiryDate) {
-        this.expiryDate = expiryDate;
-    }
+   
     public Integer getCvv() {
         return cvv;
     }
@@ -52,6 +47,13 @@ public class payment {
     }
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+    
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
     }
     @Override
     public int hashCode() {
@@ -106,7 +108,6 @@ public class payment {
             return false;
         return true;
     }
-    
     @Override
     public String toString() {
         return "payment [paymentId=" + paymentId + ", orderId=" + orderId + ", cardNumber=" + cardNumber + ", cardType="

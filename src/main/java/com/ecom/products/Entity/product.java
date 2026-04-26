@@ -7,17 +7,12 @@ import jakarta.persistence.Id;
 public class product {
 
     @Id
-    private Integer productId;
+    private String productId;
     private Integer orderId;
     private Integer productName;
     private float productPrice;
     private Integer quantity;
-    public Integer getProductId() {
-        return productId;
-    }
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+    
     public Integer getProductName() {
         return productName;
     }
@@ -42,6 +37,12 @@ public class product {
     }
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+    public String getProductId() {
+        return productId;
+    }
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
     @Override
     public int hashCode() {
@@ -93,6 +94,7 @@ public class product {
                 + ", productPrice=" + productPrice + ", quantity=" + quantity + "]";
     }
 
+    
     
     
 }

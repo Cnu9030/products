@@ -8,7 +8,7 @@ public class paymentDTO {
     private Integer orderId;
     private Long cardNumber;
     private String cardType;
-    private LocalDate expiryDate;
+    private String expiryDate;
     private Integer cvv;
     
     public Integer getPaymentId() {
@@ -29,12 +29,7 @@ public class paymentDTO {
     public void setCardType(String cardType) {
         this.cardType = cardType;
     }
-    public LocalDate getExpiryDate() {
-        return expiryDate;
-    }
-    public void setExpiryDate(LocalDate expiryDate) {
-        this.expiryDate = expiryDate;
-    }
+   
     public Integer getCvv() {
         return cvv;
     }
@@ -46,6 +41,13 @@ public class paymentDTO {
     }
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
+    }
+    
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
     }
     @Override
     public String toString() {

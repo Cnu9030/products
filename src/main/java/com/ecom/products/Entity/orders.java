@@ -3,12 +3,15 @@ package com.ecom.products.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,6 +26,7 @@ public class orders {
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="paymentId")
+    @NotNull(message = "{payment.required}")
     private payment payment;
 
     @OneToMany(cascade=CascadeType.ALL)
@@ -32,6 +36,7 @@ public class orders {
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="addressId")
+    @NotBlank(message = "{shipping.required}")
     private shipping ship;
 
     public Integer getOrderId() {

@@ -1,22 +1,24 @@
 package com.ecom.products.DTO;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import com.ecom.products.Entity.payment;
-import com.ecom.products.Entity.product;
-import com.ecom.products.Entity.shipping;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class ordersDTO {
     private Integer orderId;
     private Integer customerId;
-    private LocalDate date;
+    private LocalDate orderDate;
 
-    private payment payment;
+    @JsonProperty("paymentMethod")
+    private paymentDTO payment;
 
-    private product products;
+    @JsonProperty("items")
+    private List<productDTO> products;
 
-    private shipping ship;
+    @JsonProperty("shippingAddress")
+    private shippingDTO ship;
 
     public Integer getOrderId() {
         return orderId;
@@ -34,43 +36,46 @@ public class ordersDTO {
         this.customerId = customerId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getOrderDate() {
+        return orderDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public payment getPayment() {
+    public paymentDTO getPayment() {
         return payment;
     }
 
-    public void setPayment(payment payment) {
+    public void setPayment(paymentDTO payment) {
         this.payment = payment;
     }
 
-    public product getProducts() {
-        return products;
-    }
+   
 
-    public void setProducts(product products) {
-        this.products = products;
-    }
-
-    public shipping getShip() {
+    public shippingDTO getShip() {
         return ship;
     }
 
-    public void setShip(shipping ship) {
+    public void setShip(shippingDTO ship) {
         this.ship = ship;
+    }
+
+    public List<productDTO> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<productDTO> products) {
+        this.products = products;
     }
 
     @Override
     public String toString() {
-        return "ordersDTO [orderId=" + orderId + ", customerId=" + customerId + ", date=" + date + ", payment="
-                + payment + ", products=" + products + ", ship=" + ship + "]";
+        return "ordersDTO [orderId=" + orderId + ", customerId=" + customerId + ", orderDate=" + orderDate
+                + ", payment=" + payment + ", products=" + products + ", ship=" + ship + "]";
     }
+
 
     
 }
