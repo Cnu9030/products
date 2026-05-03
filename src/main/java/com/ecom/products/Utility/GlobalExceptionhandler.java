@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionhandler {
-    @RestControllerAdvice
-public class GlobalExceptionHandler {
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<error> handleValidationException(MethodArgumentNotValidException ex) {
         String errorMessage = ex.getBindingResult()
@@ -24,6 +21,13 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(apiError, apiError.getStatusCode());
     }
-}
+
+    @ExceptionHandler(OrderExistsException.class)
+    public ResponseEntity<error> handleOrderExists(OrderExistsException ex) {
+
+        error apiError = new error(ex.getMessage(), HttpStatus.CONFLICT);
+
+        return new ResponseEntity<>(apiError, apiError.getStatusCode());
+    }
 
 }

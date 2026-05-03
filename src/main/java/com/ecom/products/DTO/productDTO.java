@@ -3,18 +3,13 @@ package com.ecom.products.DTO;
 public class productDTO {
 
     private String productId;
-    private Integer orderId;
-    private Integer productName;
+    private String orderId;
+    private String productName;
     private float productPrice;
     private Integer quantity;
     
    
-    public Integer getProductName() {
-        return productName;
-    }
-    public void setProductName(Integer productName) {
-        this.productName = productName;
-    }
+
     public float getProductPrice() {
         return productPrice;
     }
@@ -27,13 +22,6 @@ public class productDTO {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
    
     public String getProductId() {
         return productId;
@@ -41,10 +29,32 @@ public class productDTO {
     public void setProductId(String productId) {
         this.productId = productId;
     }
+  
+    public String getOrderId() {
+        return orderId;
+    }
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+    
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     @Override
     public String toString() {
-        return "productDTO [productId=" + productId + ", orderId=" + orderId + ", productName=" + productName
-                + ", productPrice=" + productPrice + ", quantity=" + quantity + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("productDTO{");
+        sb.append("productId=").append(productId);
+        sb.append(", orderId=").append(orderId);
+        sb.append(", productName=").append(productName);
+        sb.append(", productPrice=").append(productPrice);
+        sb.append(", quantity=").append(quantity);
+        sb.append('}');
+        return sb.toString();
     }
 
     

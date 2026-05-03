@@ -2,23 +2,21 @@ package com.ecom.products.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class product {
 
     @Id
     private String productId;
-    private Integer orderId;
-    private Integer productName;
+    private String orderId;
+    private String productName;
     private float productPrice;
     private Integer quantity;
+
     
-    public Integer getProductName() {
-        return productName;
-    }
-    public void setProductName(Integer productName) {
-        this.productName = productName;
-    }
+    
     public float getProductPrice() {
         return productPrice;
     }
@@ -32,17 +30,26 @@ public class product {
         this.quantity = quantity;
     }
     
-    public Integer getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
+   
     public String getProductId() {
         return productId;
     }
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+    
+    public String getProductName() {
+        return productName;
+    }
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+   
+    public String getOrderId() {
+        return orderId;
+    }
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
     @Override
     public int hashCode() {
@@ -93,6 +100,8 @@ public class product {
         return "product [productId=" + productId + ", orderId=" + orderId + ", productName=" + productName
                 + ", productPrice=" + productPrice + ", quantity=" + quantity + "]";
     }
+
+
 
     
     

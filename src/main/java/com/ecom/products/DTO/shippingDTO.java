@@ -3,7 +3,7 @@ package com.ecom.products.DTO;
 public class shippingDTO {
 
     private String addressId;
-    private Integer orderId;
+    private String orderId;
     private String street;
     private String city;
     private String state;
@@ -47,18 +47,27 @@ public class shippingDTO {
         this.country = country;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
-    
+
     @Override
     public String toString() {
-        return "shippingDTO [addressId=" + addressId + ", orderId=" + orderId + ", street=" + street + ", city=" + city
-                + ", state=" + state + ", zipCode=" + zipCode + ", country=" + country + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("shippingDTO{");
+        sb.append("street=").append(street);
+        sb.append(", city=").append(city);
+        sb.append(", state=").append(state);
+        sb.append(", zipCode=").append(zipCode);
+        sb.append(", country=").append(country);
+        sb.append('}');
+        return sb.toString();
     }
+    
+    
 
     
 }

@@ -3,7 +3,6 @@ package com.ecom.products.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -19,9 +18,9 @@ import jakarta.validation.constraints.NotNull;
 public class orders {
     @Id
     @NotNull(message = "{order.id.required}")
-    private Integer orderId;
+    private String orderId;
     @NotNull(message = "{customer.id.required}")
-    private Integer customerId;
+    private String customerId;
     private LocalDate date;
 
     @OneToOne(cascade=CascadeType.ALL)
@@ -39,21 +38,8 @@ public class orders {
     @NotBlank(message = "{shipping.required}")
     private shipping ship;
 
-    public Integer getOrderId() {
-        return orderId;
-    }
+   
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
 
     public LocalDate getDate() {
         return date;
@@ -85,6 +71,22 @@ public class orders {
 
     public void setShip(shipping ship) {
         this.ship = ship;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     @Override
@@ -144,11 +146,18 @@ public class orders {
 
     @Override
     public String toString() {
-        return "orders [orderId=" + orderId + ", customerId=" + customerId + ", date=" + date + ", payment=" + payment
-                + ", products=" + products + ", ship=" + ship + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("orders{");
+        sb.append("orderId=").append(orderId);
+        sb.append(", customerId=").append(customerId);
+        sb.append(", date=").append(date);
+        sb.append(", payment=").append(payment);
+        sb.append(", products=").append(products);
+        sb.append(", ship=").append(ship);
+        sb.append('}');
+        return sb.toString();
     }
     
     
-
     
 }

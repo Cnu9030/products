@@ -2,18 +2,21 @@ package com.ecom.products.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class shipping {
 
     @Id
     private String addressId;
-    private Integer orderId;
+    private String orderId;
     private String street;
     private String city;
     private String state;
     private String zipCode;
     private String country;
+    
     public String getAddressId() {
         return addressId;
     }
@@ -51,10 +54,10 @@ public class shipping {
         this.country = country;
     }
     
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
     @Override
@@ -121,6 +124,10 @@ public class shipping {
         return "shipping [addressId=" + addressId + ", orderId=" + orderId + ", street=" + street + ", city=" + city
                 + ", state=" + state + ", zipCode=" + zipCode + ", country=" + country + "]";
     }
+
+    
+
+   
 
     
 }

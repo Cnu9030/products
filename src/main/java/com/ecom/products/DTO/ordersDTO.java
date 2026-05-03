@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class ordersDTO {
-    private Integer orderId;
-    private Integer customerId;
+    private String orderId;
+    private String customerId;
     private LocalDate orderDate;
 
     @JsonProperty("paymentMethod")
@@ -20,21 +20,7 @@ public class ordersDTO {
     @JsonProperty("shippingAddress")
     private shippingDTO ship;
 
-    public Integer getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
+    
 
     public LocalDate getOrderDate() {
         return orderDate;
@@ -70,12 +56,35 @@ public class ordersDTO {
         this.products = products;
     }
 
-    @Override
-    public String toString() {
-        return "ordersDTO [orderId=" + orderId + ", customerId=" + customerId + ", orderDate=" + orderDate
-                + ", payment=" + payment + ", products=" + products + ", ship=" + ship + "]";
+    public String getOrderId() {
+        return orderId;
     }
 
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+  public String getCustomerId() {
+    return customerId;
+  }
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
+  }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ordersDTO{");
+        sb.append("orderId=").append(orderId);
+        sb.append(", customerId=").append(customerId);
+        sb.append(", orderDate=").append(orderDate);
+        sb.append(", payment=").append(payment);
+        sb.append(", products=").append(products);
+        sb.append(", ship=").append(ship);
+        sb.append('}');
+        return sb.toString();
+    }
 
     
 }
